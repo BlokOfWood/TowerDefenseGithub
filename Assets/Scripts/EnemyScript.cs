@@ -21,8 +21,12 @@ public class EnemyScript : MonoBehaviour {
             Vector3 dir = mginst.Vec2toVec3(waypoints[CurrentWaypoint]) - transform.position;
             transform.Translate(dir.normalized * speed * Time.deltaTime);
 
-            //This happens the enemy reaches a Waypoint
-            if (Mathf.Abs(transform.position.x - mginst.Vec2toVec3(waypoints[CurrentWaypoint]).x) < 0.02 && Mathf.Abs(transform.position.y - mginst.Vec2toVec3(waypoints[CurrentWaypoint]).y) < 0.02) {
+
+            float DistanceX = Mathf.Abs(transform.position.x - mginst.Vec2toVec3(waypoints[CurrentWaypoint]).x);
+            float DistanceY = Mathf.Abs(transform.position.z - waypoints[CurrentWaypoint].y);
+            Debug.Log(DistanceY);
+            if (DistanceX < 0.02 && DistanceY < 0.02) {
+                //This happens the enemy reaches a Waypoint
                 transform.position = mginst.Vec2toVec3(waypoints[CurrentWaypoint]);
                 Debug.Log("Reached Waypoint");
                 CurrentWaypoint += 1;   

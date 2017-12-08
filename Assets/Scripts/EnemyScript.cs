@@ -22,7 +22,7 @@ public class EnemyScript : MonoBehaviour {
             transform.Translate(dir.normalized * speed * Time.deltaTime);
 
 
-            float DistanceX = Mathf.Abs(transform.position.x - mginst.Vec2toVec3(waypoints[CurrentWaypoint]).x);
+            float DistanceX = Mathf.Abs(transform.position.x - waypoints[CurrentWaypoint].x);
             float DistanceY = Mathf.Abs(transform.position.z - waypoints[CurrentWaypoint].y);
             Debug.Log(DistanceY);
             if (DistanceX < 0.02 && DistanceY < 0.02) {

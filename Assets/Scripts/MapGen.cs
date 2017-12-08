@@ -17,7 +17,7 @@ public class MapGen : MonoBehaviour {
 
     void Start() {
         if (waypoints.Length < 2) {
-            Debug.Log("There must be at least two waypoints.");
+            Debug.LogError("There must be at least two waypoints.");
             noErrors = false;
         }
         if (waypoints[0].x >= MapSize.x || waypoints[0].y >= MapSize.y) {

@@ -24,7 +24,7 @@ public class EnemyScript : MonoBehaviour {
 
             float DistanceX = Mathf.Abs(transform.position.x - waypoints[CurrentWaypoint].x);
             float DistanceY = Mathf.Abs(transform.position.z - waypoints[CurrentWaypoint].y);
-            if (DistanceX < 0.02 && DistanceY < 0.02) {
+            if (DistanceX < 0.04 && DistanceY < 0.04) {
                 //This happens the enemy reaches a Waypoint
                 transform.position = mginst.Vec2toVec3(waypoints[CurrentWaypoint]);
                 Debug.Log("Reached Waypoint");

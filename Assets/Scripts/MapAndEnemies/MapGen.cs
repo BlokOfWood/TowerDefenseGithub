@@ -13,6 +13,9 @@ public class MapGen : MonoBehaviour {
     public GameObject BaseNodeParent;
     public GameObject BaseNode;
 
+    public GameObject StartNode; //It might become a portal or something.
+    public GameObject EndNode; //It might become whatever, something creative.
+
     public bool noErrors = true;
 
     void Start() {
@@ -78,6 +81,9 @@ public class MapGen : MonoBehaviour {
                 inst.layer = 8;
             }
         }
+
+        StartNode.transform.position = new Vector3(waypoints[0].x, 0.55f, waypoints[0].y);
+        EndNode.transform.position = new Vector3(waypoints[waypoints.Length-1].x, 0.55f, waypoints[waypoints.Length-1].y);
     }
 
     ///<summary>Just converts a Vector 2 to a Vector 3</summary>

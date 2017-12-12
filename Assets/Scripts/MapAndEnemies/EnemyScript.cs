@@ -1,15 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Timers;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
     int CurrentWaypoint = 1;
     public float speed;
+    public GameObject gm;
     MapGen mginst;
     Vector2[] waypoints;
+    
 
     void Start() {
-        mginst = GameObject.Find("GameManager").GetComponent<MapGen>();
+        gm = GameObject.Find("GameManager");
+        mginst = gm.GetComponent<MapGen>();
+
         waypoints = mginst.waypoints;
         transform.position = mginst.Vec2toVec3(waypoints[0]);
         speed = mginst.EnemySpeed;
@@ -31,9 +34,14 @@ public class EnemyScript : MonoBehaviour {
                 CurrentWaypoint += 1;   
             }
         }
+
+        
     }
 
-    void OnTriggerEnter() {
-
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.name == "EndNode") {
+            gm.GetComponent<WaveManagement>().EnemyReachedEnd(1);
+            Destroy(gameObject);
+        }
     }
 }

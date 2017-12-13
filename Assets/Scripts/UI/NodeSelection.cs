@@ -46,7 +46,7 @@ public class NodeSelection : MonoBehaviour {
             float NextGreen = renderer.material.color.g + (WhichWayGreen * ChangeRate);
             float NextBlue = renderer.material.color.b + (WhichWayBlue * ChangeRate);
 
-            renderer.material.color = Color.Lerp(renderer.material.color, selectedcolor, ChangeRate);
+            renderer.material.color = new Color(NextRed, NextGreen, NextBlue); ;
 
             if (RedDiff < 0.1f && BlueDiff < 0.1f && GreenDiff < 0.1f) break;
             yield return new WaitForFixedUpdate();
@@ -84,6 +84,7 @@ public class NodeSelection : MonoBehaviour {
             float NextRed = renderer.material.color.r + (WhichWayRed * ChangeRate);
             float NextGreen = renderer.material.color.g + (WhichWayGreen * ChangeRate);
             float NextBlue = renderer.material.color.b + (WhichWayBlue * ChangeRate);
+
             renderer.material.color = new Color(NextRed, NextGreen, NextBlue);
             //If color is close enough then break
             if (RedDiff < 0.1f && BlueDiff < 0.1f && GreenDiff < 0.1f) break;

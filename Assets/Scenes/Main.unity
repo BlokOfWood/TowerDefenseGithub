@@ -1176,7 +1176,6 @@ MonoBehaviour:
   - {x: 4, y: 0}
   - {x: 4, y: 8}
   - {x: 2, y: 8}
-  EnemySpeed: 2
   EnemyPathNodeParent: {fileID: 1724461931}
   EnemyPathNode: {fileID: 1173758699823210, guid: 17d7470cf098bb043a2af888f306328b,
     type: 2}

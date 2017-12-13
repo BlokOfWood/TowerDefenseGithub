@@ -2,10 +2,13 @@
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour {
-    int CurrentWaypoint = 1;
-    public float speed;
     public GameObject gm;
     MapGen mginst;
+    
+    public EnemyType thisenemy;
+    public float speed;
+
+    int CurrentWaypoint = 1;
     Vector2[] waypoints;
     
 
@@ -15,7 +18,8 @@ public class EnemyScript : MonoBehaviour {
 
         waypoints = mginst.waypoints;
         transform.position = mginst.Vec2toVec3(waypoints[0]);
-        speed = mginst.EnemySpeed;
+
+        speed = thisenemy.speed;
     }
 
     void Update() { 
@@ -27,6 +31,7 @@ public class EnemyScript : MonoBehaviour {
 
             float DistanceX = Mathf.Abs(transform.position.x - waypoints[CurrentWaypoint].x);
             float DistanceY = Mathf.Abs(transform.position.z - waypoints[CurrentWaypoint].y);
+            
             if (DistanceX < 0.04 && DistanceY < 0.04) {
                 //This happens the enemy reaches a Waypoint
                 transform.position = mginst.Vec2toVec3(waypoints[CurrentWaypoint]);
@@ -34,13 +39,11 @@ public class EnemyScript : MonoBehaviour {
                 CurrentWaypoint += 1;   
             }
         }
-
-        
     }
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.name == "EndNode") {
-            gm.GetComponent<WaveManagement>().EnemyReachedEnd(1);
+            gm.GetComponent<WaveManagement>().EnemyReachedEnd(thisenemy.damage);
             Destroy(gameObject);
         }
     }

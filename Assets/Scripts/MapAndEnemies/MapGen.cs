@@ -5,7 +5,6 @@ using UnityEngine;
 public class MapGen : MonoBehaviour {
     public Vector2 MapSize;
     public Vector2[] waypoints; //Every enemy waypoint.
-    public float EnemySpeed; //The speed which the enemy is moving with. It's here because this way it's centralized(it isn't used in this script).
 
     public GameObject EnemyPathNodeParent;
     public GameObject EnemyPathNode; //Just a path prefab.

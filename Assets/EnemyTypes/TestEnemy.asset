@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyType
   name: TestEnemy
   damage: 11
-  speed: 5
+  speed: 0

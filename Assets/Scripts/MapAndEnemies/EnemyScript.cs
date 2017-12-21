@@ -13,7 +13,7 @@ public class EnemyScript : MonoBehaviour {
     
 
     void Start() {
-        gm = GameObject.Find("GameManager");
+        gm = GameObject.FindGameObjectWithTag("GameController");
         mginst = gm.GetComponent<MapGen>();
 
         waypoints = mginst.waypoints;
